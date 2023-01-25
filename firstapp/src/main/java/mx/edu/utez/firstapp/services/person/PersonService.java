@@ -24,4 +24,22 @@ public class PersonService {
             "Ok"
         );
     }
+
+    public CustomResponse<Person> savePerson(Person person){
+        return new CustomResponse<>(
+                this.repository.save(person),
+                false,
+                200,
+                "Ok"
+        );
+    }
+    public CustomResponse<String> deletePerson(Long id){
+        this.repository.deleteById(id);
+        return new CustomResponse<>(
+                "Eliminado",
+                false,
+                200,
+                "Ok"
+        );
+    }
 }

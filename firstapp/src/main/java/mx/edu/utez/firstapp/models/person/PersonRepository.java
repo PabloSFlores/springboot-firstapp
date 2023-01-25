@@ -14,4 +14,5 @@ public interface PersonRepository extends JpaRepository<Person, Long> {
 
 //    @Query(name = "SELECT * FROM people;", nativeQuery = true)
 //    List<Person> buscarTodos();
+
 }
