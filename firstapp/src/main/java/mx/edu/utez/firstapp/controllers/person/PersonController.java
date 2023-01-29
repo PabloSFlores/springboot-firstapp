@@ -20,6 +20,7 @@ public class PersonController {
     @Autowired
     private PersonService service;
 
+    //Obtener todos los registros de people
     @GetMapping("/")
     public ResponseEntity<CustomResponse<List<Person>>> getAll(){
         return new ResponseEntity<>(
@@ -28,6 +29,16 @@ public class PersonController {
         );
     }
 
+    //Obtener un registro de people
+    @GetMapping("/{id}")
+    public ResponseEntity<CustomResponse<Person>> getOne(@PathVariable("id") Long id){
+        return new ResponseEntity<>(
+                this.service.getOne(id),
+                HttpStatus.OK
+        );
+    }
+
+    //Insertar a una persona
     @PostMapping
     public ResponseEntity<CustomResponse<Person>> insert(
         @RequestBody PersonDto personDto,@Valid BindingResult result){
@@ -40,6 +51,32 @@ public class PersonController {
         return new ResponseEntity<>(
             this.service.insert(personDto.getPerson()),
             HttpStatus.CREATED
+        );
+    }
+
+    //Modificar una persona
+    @PutMapping("/")
+    public ResponseEntity<CustomResponse<Person>> update(
+        @RequestBody PersonDto personDto,@Valid BindingResult result){
+        if(result.hasErrors()){
+            return new ResponseEntity<>(
+                null,
+                HttpStatus.BAD_REQUEST
+            );
+        }
+        return new ResponseEntity<>(
+            this.service.update(personDto.getPerson()),
+            HttpStatus.CREATED
+        );
+    }
+
+    //Modificar el status de una persona
+    @PatchMapping("/")
+    public ResponseEntity<CustomResponse<Integer>> enableOrDisable(
+            @RequestBody PersonDto personDto){
+        return new ResponseEntity<>(
+                this.service.changeStatus(personDto.getPerson()),
+                HttpStatus.OK
         );
     }
 
