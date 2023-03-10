@@ -74,7 +74,7 @@ public class CategoryController {
 
     //Modificar el status de una categoría
     @PatchMapping("/")
-    public ResponseEntity<CustomResponse<Integer>> enableOrDisable(
+    public ResponseEntity<CustomResponse<Boolean>> enableOrDisable(
             @RequestBody CategoryDto categoryDto) {
         return new ResponseEntity<>(
                 this.service.changeStatus(categoryDto.getCategory()),

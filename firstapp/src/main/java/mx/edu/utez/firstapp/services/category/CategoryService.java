@@ -79,10 +79,10 @@ public class CategoryService {
     //Servicio para cambiar el status de una categoría
     //valida existencia por id
     @Transactional(rollbackFor =  {SQLException.class})
-    public CustomResponse<Integer> changeStatus(Category category){
+    public CustomResponse<Boolean> changeStatus(Category category){
         if(!this.repository.existsById(category.getId())){
             return new CustomResponse<>(
-                    0,
+                    false,
                     true,
                     400,
                     "La categoría no existe"
@@ -90,8 +90,8 @@ public class CategoryService {
         }
         return new CustomResponse<>(
                 this.repository.updateStatusById(
-                        !category.getStatus(), category.getId()
-                ),
+                        category.getStatus(), category.getId()
+                ) == 1,
                 false,
                 200,
                 "Categoría actualizada correctamente"
