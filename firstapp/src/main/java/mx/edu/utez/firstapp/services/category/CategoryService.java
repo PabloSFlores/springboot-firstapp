@@ -90,7 +90,7 @@ public class CategoryService {
         }
         return new CustomResponse<>(
                 this.repository.updateStatusById(
-                        category.getStatus(), category.getId()
+                        !category.getStatus(), category.getId()
                 ),
                 false,
                 200,
