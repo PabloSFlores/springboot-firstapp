@@ -1,7 +1,6 @@
 package mx.edu.utez.firstapp.security.model;
 
 import mx.edu.utez.firstapp.models.person.Person;
-import mx.edu.utez.firstapp.models.rol.Role;
 import mx.edu.utez.firstapp.models.user.User;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
