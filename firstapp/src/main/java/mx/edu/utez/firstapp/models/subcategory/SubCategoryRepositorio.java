@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface SubCategoryRepositorio extends JpaRepository<SubCategory, Long> {
     @Modifying
-    @Query(value = "UPDATE subcategories SET status = :status WHERE id = :id", nativeQuery = true)
+    @Query(value = "UPDATE sub_category SET status = :status WHERE id = :id", nativeQuery = true)
     int updateStatusById(
             @Param("status") Boolean status,
             @Param("id")Long id);

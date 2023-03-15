@@ -22,6 +22,7 @@ public class SubcategoryController {
     @Autowired
     private SubcategoryService service;
 
+    @GetMapping("/")
     public ResponseEntity<CustomResponse<List<SubCategory>>> getAll() {
         return new ResponseEntity<>(
                 this.service.getAll(),
