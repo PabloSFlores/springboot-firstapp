@@ -59,7 +59,7 @@ public class MainSecurity extends WebSecurityConfigurerAdapter {
         http.cors().and()
                 .csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/api-market/auth/**","/api-market/auth/**").permitAll()
+                .antMatchers("/api-market/auth/**","/api-market/auth/**","/api-market/contact/**").permitAll()
                 .antMatchers("/api-market/category/*").permitAll()
                 .antMatchers("/api-market/subcategory/*","/api-market/subcategory/**").permitAll()
                 .antMatchers(HttpMethod.POST, "/api-market/user/").permitAll()
