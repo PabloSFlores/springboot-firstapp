@@ -34,5 +34,5 @@ public class SubCategory {
 
     @OneToMany(mappedBy = "subCategory")
     @JsonIgnore
-    private List<Product> product;
+    private List<Product> products;
 }

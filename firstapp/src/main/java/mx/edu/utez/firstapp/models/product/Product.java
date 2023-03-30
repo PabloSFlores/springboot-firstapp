@@ -7,9 +7,10 @@ import lombok.Setter;
 import mx.edu.utez.firstapp.models.subcategory.SubCategory;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
-@Table(name = "product")
+@Table(name = "products")
 @NoArgsConstructor
 @AllArgsConstructor
 @Setter
@@ -22,16 +23,17 @@ public class Product {
     private String name;
     @Column(columnDefinition = "text")
     private String description;
-    @Basic(fetch = FetchType.LAZY)
-    @Column(name = "fileBlob", columnDefinition = "longblob")
-    private byte[] filebase64;
     @Column()
     private int cuantity;
     @Column()
     private double price;
-    @Column(columnDefinition = "TINYINT DEFAULT 1")
-    private Boolean status;
+    @Column()
+    private String brand;
+    @Column()
+    private String status;
     @ManyToOne
     @JoinColumn(name = "subcategogry_id")
     private SubCategory subCategory;
+    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
+    private List<ProductImages> images;
 }

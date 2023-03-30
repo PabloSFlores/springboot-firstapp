@@ -62,9 +62,10 @@ public class MainSecurity extends WebSecurityConfigurerAdapter {
                 .antMatchers("/api-market/auth/**","/api-market/auth/**","/api-market/contact/**").permitAll()
                 .antMatchers("/api-market/category/*").permitAll()
                 .antMatchers("/api-market/subcategory/*","/api-market/subcategory/**").permitAll()
-                .antMatchers(HttpMethod.POST, "/api-market/user/").permitAll()
+                .antMatchers(HttpMethod.POST, "/api-market/user/", "/api-market/product/loadfile/**").permitAll()
                 .antMatchers(HttpMethod.POST, "/api-market/person/").permitAll()
-                .antMatchers(HttpMethod.GET,"/api-market/product/*").permitAll()
+                .antMatchers(HttpMethod.GET,"/api-market/product/*",
+                        "/api-market/product/loadfile/*").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .exceptionHandling().authenticationEntryPoint(entryPoint)
