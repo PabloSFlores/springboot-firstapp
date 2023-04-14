@@ -24,8 +24,6 @@ public class Product {
     @Column(columnDefinition = "text")
     private String description;
     @Column()
-    private int cuantity;
-    @Column()
     private double price;
     @Column()
     private String brand;
