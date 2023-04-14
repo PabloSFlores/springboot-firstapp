@@ -18,7 +18,6 @@ public class ProductDto {
     private Long id;
     private String name;
     private String description;
-    private int cuantity;
     private double price;
     private String brand;
     private String status;
@@ -29,7 +28,6 @@ public class ProductDto {
                 getId(),
                 getName(),
                 getDescription(),
-                getCuantity(),
                 getPrice(),
                 getBrand(),
                 getStatus(),

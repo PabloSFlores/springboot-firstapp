@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.io.IOException;
+import java.util.List;
 
 @RestController
 @RequestMapping("/api-market/product")
@@ -28,6 +29,14 @@ public class ProductController {
     public ResponseEntity<CustomResponse<Object>> insert(@Valid @RequestBody ProductDto product){
         return new ResponseEntity<>(
                 this.service.insert(product.getProduct()),
+                HttpStatus.CREATED
+        );
+    }
+
+    @GetMapping("/")
+    public ResponseEntity<CustomResponse<List<Product>>> getAll(){
+        return new ResponseEntity<>(
+                this.service.getAll(),
                 HttpStatus.CREATED
         );
     }

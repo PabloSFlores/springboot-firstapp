@@ -19,15 +19,10 @@ public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column()
     private String name;
-    @Column(columnDefinition = "text")
     private String description;
-    @Column()
     private double price;
-    @Column()
     private String brand;
-    @Column()
     private String status;
     @ManyToOne
     @JoinColumn(name = "subcategogry_id")

@@ -83,4 +83,14 @@ public class ProductService {
                 "Producto registrado correctamente"
         );
     }
+
+    @Transactional(rollbackFor = {SQLException.class})
+    public CustomResponse<List<Product>> getAll(){
+        return new CustomResponse<>(
+                this.productRepository.findAll(),
+                false,
+                200,
+                "ok"
+        );
+    }
 }
